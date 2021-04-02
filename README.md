@@ -10,6 +10,6 @@ Later in development this method will be replaced with a shell script that will 
 
 TODO list - Create DB variables via bash script
 
-[ ] POSTGRES_USER=user
-[ ] POSTGRES_PASSWORD=dbpwd
-[ ] POSTGRES_DB=db
+- [ ] POSTGRES_USER=user
+- [ ] POSTGRES_PASSWORD=dbpwd
+- [ ] POSTGRES_DB=db
