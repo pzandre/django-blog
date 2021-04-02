@@ -43,7 +43,7 @@ The final step is to create a Django superuser using the following command:
 
 You'll be prompted to enter an username, email and password.
 
-This finishes the installation process and the docker containers will be running as background process. The application will be accessible entering `localhost:8000` at the web browser of your choice.
+This finishes the installation process and the docker containers will be running as background processes. The application can be acessed entering `localhost:8000` at the web browser of your choice.
 
 To stop the application, navigate to the project folder using a terminal and enter `docker-compose down`
 
