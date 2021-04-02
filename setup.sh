@@ -20,7 +20,7 @@ if [ -z "$POSTGRES_USER" ]
 fi
 
 echo "Choose your database password:"
-read POSTGRES_PASSWORD
+read -s POSTGRES_PASSWORD
 
 if [ -z "$POSTGRES_PASSWORD" ]
   then
