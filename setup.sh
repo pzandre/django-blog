@@ -1,7 +1,5 @@
 #! /bin/bash
 
-touch ./.env
-
 #This will generate the project environment variables via user's input
 echo "Choose the name of your database:"
 read POSTGRES_DB
@@ -29,6 +27,8 @@ if [ -z "$POSTGRES_PASSWORD" ]
     echo "Database password must not be empty. Please choose a valid password"
     exit 1
 fi
+
+touch ./.env
 
 #Saving the variables at .env file
 echo "POSTGRES_DB=$POSTGRES_DB" >> ./.env
