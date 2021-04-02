@@ -18,7 +18,7 @@ You'll then be prompted to enter the Database name, username and password.
 This setup script was tested on a Linux environment, if you're trying to install on a different Operating System you can still set it up manually.
 
 ## Manual set-up (Windows, Mac or Linux, just for fun)
-### There are also few steps to manually install the application:
+### There are few steps to manually install the application:
 
 1. Follow step 1 and 2 of the Automated Install above.
 
