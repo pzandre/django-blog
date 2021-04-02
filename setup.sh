@@ -1,5 +1,7 @@
 #! /bin/bash
+
 touch ./.env
+
 #This will generate the project environment variables via user's input
 echo "Choose the name of your database:"
 read POSTGRES_DB
