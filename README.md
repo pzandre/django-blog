@@ -3,7 +3,7 @@
 #### *by Andre Henrique Rodrigues Perez*
 
 ## Automated Linux set-up
-### In order to properly run the automated you must first:
+### In order to properly run the automated set-up you must first:
 
 1. Verify you have Docker and Docker compose installed. Follow [this](https://docs.docker.com/get-docker/ "Get Docker") and [this](https://docs.docker.com/compose/install/ "Install Docker Compose") instructions if it is not installed.
 
