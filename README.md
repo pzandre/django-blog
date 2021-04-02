@@ -1,5 +1,6 @@
 # django-blog
 ### **A simple Blog-like webapp using Docker, PostgreSQL and, of course, Django**
+#### *by Andre Henrique Rodrigues Perez*
 
 ## Automated Linux set-up
 ### In order to properly run the automated you must first:
@@ -34,3 +35,18 @@ This setup script was tested on a Linux environment, if you're trying to install
 Then, using a terminal, navigate to the project folder and start the application:
 
 `docker-compose up --build -d`
+
+## Superuser creation
+The final step is to create a Django superuser using the following command:
+
+`docker exec -it django python src/manage.py createsuperuser`
+
+You'll be prompted to enter an username, email and password.
+
+This finishes the installation process and the docker containers will be running as background process. The application will be accessible entering `localhost:8000` at the web browser of your choice.
+
+To stop the application, navigate to the project folder using a terminal and enter `docker-compose down`
+
+To start it again simply enter `docker-compose up -d`
+
+If you prefer to maintain the process attached to the terminal window, in order to debug, simply remove the `-d` argument from the former command.
