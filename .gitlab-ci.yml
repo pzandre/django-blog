@@ -19,7 +19,7 @@ deploy-staging:
        docker stop $DOCKER_CONTAINERS &&
        tar -czf secrets.tar.gz $SECRETS &&
        sudo rm -rf app &&
-       git clone $REPO_ORIGIN &&
+       git clone $REPO_ORIGIN $LOCAL_FOLDER &&
        tar -xzf secrets.tar.gz $LOCAL_FOLDER &&
        rm secrets.tar.gz &&
        docker-compose $DOCKER_YML"
