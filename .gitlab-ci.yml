@@ -17,7 +17,7 @@ deploy-staging:
     - ssh $USER@$SSH_IP_ADDRESS
       "cd $REPO_PATH &&
        docker stop $DOCKER_CONTAINERS &&
-       tar -czf secrets.tar.gz $SECRETS &&
+       tar -czf secrets.tar.gz -C $LOCAL_FOLDER $SECRETS &&
        sudo rm -rf $LOCAL_FOLDER &&
        git clone $REPO_ORIGIN $LOCAL_FOLDER &&
        tar -xzf secrets.tar.gz -C $LOCAL_FOLDER &&
