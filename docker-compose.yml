@@ -3,6 +3,7 @@ version: "3"
 services:
     django:
         build: .
+        restart: on-failure
         container_name: django
         command: bash -rc "python src/manage.py makemigrations &&
                            python src/manage.py migrate &&
@@ -14,12 +15,18 @@ services:
         env_file:
             - ./.env
         depends_on:
-            - pgdb
+            pgdb:
+              condition: service_healthy
     pgdb:
         image: postgres
+        restart: on-failure
         container_name: pgdb
         environment:
             POSTGRES_USER: ${POSTGRES_USER}
             POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
             POSTGRES_DB: ${POSTGRES_DB}
-    
+        healthcheck:
+            test: ["CMD-SHELL", "pg_isready -d ${POSTGRES_DB} -U ${POSTGRES_USER}"]
+            interval: 5s
+            timeout: 5s
+            retries: 5
