@@ -22,7 +22,7 @@ deploy-staging:
        cd .. &&
        sudo rm -rf $LOCAL_FOLDER &&
        git clone $REPO_ORIGIN $LOCAL_FOLDER &&
-       tar -xzf secrets.tar.gz $LOCAL_FOLDER &&
+       tar -xzf secrets.tar.gz -C $LOCAL_FOLDER &&
        rm secrets.tar.gz &&
        docker-compose $DOCKER_YML"
   only:
