@@ -31,7 +31,7 @@ fi
 touch ./.env
 
 #Saving the variables at .env file
-echo "POSTGRES_DB=$POSTGRES_DB" >> ./.env
+echo "POSTGRES_DB=$POSTGRES_DB" > ./.env
 echo "POSTGRES_USER=$POSTGRES_USER" >> ./.env
 echo "POSTGRES_PASSWORD=$POSTGRES_PASSWORD" >> ./.env
 

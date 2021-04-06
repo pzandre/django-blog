@@ -15,6 +15,13 @@ deploy-staging:
     url: $SSH_IP_ADDRESS
   script:
     - ssh $USER@$SSH_IP_ADDRESS
-      "cd $REPO_PATH"
+      "cd $REPO_PATH &&
+       docker stop $DOCKER_CONTAINERS &&
+       tar -czf secrets.tar.gz $SECRETS &&
+       sudo rm -rf app &&
+       git clone $REPO_ORIGIN &&
+       tar -xzf secrets.tar.gz $LOCAL_FOLDER &&
+       rm secrets.tar.gz &&
+       docker-compose $DOCKER_YML"
   only:
     - main
