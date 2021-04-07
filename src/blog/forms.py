@@ -7,8 +7,20 @@ class PostForm(forms.ModelForm):
         fields = ['title', 'author', 'body', 'tags']
 
         widget = {
-            'title': forms.TextInput(attrs={'class': 'form-control'}),
-            'author': forms.Select(attrs={'class': 'form-control'}),
-            'body': forms.Textarea(attrs={'class': 'form-control'}),
-            'tags': forms.TextInput(attrs={'class': 'form-control'}),
+            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter the title for your post'}),
+            'author': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Who are you?'}),
+            'body': forms.Textarea(attrs={'class': 'form-control', 'placeholder': "What's in your mind?"}),
+            'tags': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'What is this post related to?'}),
+        }
+
+
+class EditForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ['title', 'body', 'tags']
+
+        widget = {
+            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter the title for your post'}),
+            'body': forms.Textarea(attrs={'class': 'form-control', 'placeholder': "What's in your mind?"}),
+            'tags': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'What is this post related to?'}),
         }
