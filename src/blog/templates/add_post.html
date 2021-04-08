@@ -8,9 +8,9 @@
   {% csrf_token %}    
   {% for field in form %}
     <div class="mb-3">
-      <small>{{ field.label }}</small>
+      <small>{{ field.label }}</small><br/>
       {{ field }}
-      <br/><small>{{ field.help_text }}</small>
+      <small>{{ field.help_text }}</small>
     </div>
   {% endfor %}
   <button class="btn btn-secondary">Post</button>
