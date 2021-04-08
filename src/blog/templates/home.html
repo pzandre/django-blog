@@ -14,11 +14,14 @@
     {{ post.post_date }}
 
     {% if user.is_authenticated %}
-
+    {% if perms.blog.change_post %}
     - <small>
     <a href="{% url 'update-post' post.pk %}">Edit</a>
+    {% endif %}
+    {% if perms.blog.delete_post %}
     <a href="{% url 'delete-post' post.pk %}">Delete</a>
     </small> <br>
+    {% endif %}
 
     {% endif %}
 

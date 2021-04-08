@@ -3,6 +3,7 @@
 {% block content %}
 
 {% if user.is_authenticated %}
+{% if perms.blog.change_post %}
 
 <h1>Update Post</h1>
 <form method="POST">
@@ -21,5 +22,5 @@
 <h1>You're not allowed here!</h1>
 
 {% endif %}
-
+{% endif %}
 {% endblock %}

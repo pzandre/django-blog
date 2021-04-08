@@ -9,10 +9,13 @@
   {{ post.post_date }}
   
   {% if user.is_authenticated %}
-
+  {% if perms.blog.change_post %}
    - <a href="{% url 'update-post' post.pk %}">Edit</a>
+  {% if perms.blog.delete_post %}
   <a href="{% url 'delete-post' post.pk %}">Delete</a></small>
 
+  {% endif %}
+  {% endif %}
   {% endif %}
   
   <hr>

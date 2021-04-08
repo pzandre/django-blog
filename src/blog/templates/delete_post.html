@@ -3,6 +3,7 @@
 {% block content %}
 
 {% if user.is_authenticated %}
+{% if perms.blog.delete_post %}
 
 <h1>Delete Post</h1>
 <h3>Delete: {{ post.title }}</h3>
@@ -17,5 +18,5 @@
 <h1>You're not allowed here!</h1>
 
 {% endif %}
-
+{% endif %}
 {% endblock %}
