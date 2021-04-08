@@ -4,7 +4,7 @@ from .models import Post
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'author', 'preview', 'body', 'tags']
+        fields = ['title', 'author', 'preview', 'body', 'tags', 'category']
         
         help_texts = {
             'title': 'Choose a interesting title',
@@ -17,13 +17,14 @@ class PostForm(forms.ModelForm):
             'author': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Who are you?'}),
             'body': forms.Textarea(attrs={'class': 'form-control', 'placeholder': "What's in your mind?"}),
             'tags': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'What is this post related to?'}),
+            'category': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Choose a category'})
         }
 
 
 class EditForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'preview', 'body', 'tags']
+        fields = ['title', 'preview', 'body', 'tags', 'category']
 
         help_texts = {
             'title': 'Choose a interesting title',
@@ -35,4 +36,5 @@ class EditForm(forms.ModelForm):
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter the title for your post'}),
             'body': forms.Textarea(attrs={'class': 'form-control', 'placeholder': "What's in your mind?"}),
             'tags': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'What is this post related to?'}),
+            'category': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Choose a category'})
         }
