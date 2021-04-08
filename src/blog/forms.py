@@ -8,7 +8,7 @@ class PostForm(forms.ModelForm):
         
         help_texts = {
             'title': 'Choose a interesting title',
-            'body': 'Tell us a nice story',
+            'body': 'Tell us a nice story'
         }
 
         widget = {
@@ -26,7 +26,7 @@ class EditForm(forms.ModelForm):
 
         help_texts = {
             'title': 'Choose a interesting title',
-            'body': 'Tell us a nice story',
+            'body': 'Tell us a nice story'
         }
 
         widget = {
