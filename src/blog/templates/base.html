@@ -11,7 +11,7 @@
     <title>{% block title %} Django Blog | {% if post.title %} {{ post.title }} {% else %} Home {% endif %}{% endblock %}</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav {% if post.category.navbar_color %} class="navbar navbar-expand-lg navbar-dark" style="background: rgb(2, 0, 36); background: linear-gradient(130deg, rgb(2, 0, 36, 1) 0%, {{ post.category.navbar_color }} 100%)" {% else %} class="navbar navbar-expand-lg navbar-dark bg-dark" {% endif %}>
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'home'%}">Django Blog</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

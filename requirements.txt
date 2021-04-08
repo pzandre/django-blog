@@ -1,4 +1,5 @@
 django>=3.0,<4.0
+django-colorfield==0.4.1
 psycopg2-binary>=2.8
 python-dotenv==0.16.0
 secret-key-generator==0.0.7

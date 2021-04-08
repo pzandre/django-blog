@@ -1,3 +1,4 @@
+from colorfield.fields import ColorField
 from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
@@ -5,7 +6,11 @@ from datetime import datetime, date
 
 
 class Category(models.Model):
+    class Meta:
+        verbose_name_plural = "categories"
+
     name = models.CharField(max_length=255, default='Uncategorized')
+    navbar_color = ColorField(default='#343A40')
 
     def __str__(self):
         return self.name
