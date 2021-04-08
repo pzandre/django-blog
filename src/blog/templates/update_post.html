@@ -3,10 +3,14 @@
 {% block content %}
 
 <h1>Update Post</h1>
-<div class="mb-3">
 <form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button class="btn btn-secondary">Post</button>
-</div>
+  {% csrf_token %}
+  {% for field in form %}
+    <div class="mb-3">
+      <small>{{ field.label }}</small>
+      {{ field }}
+      <br/><small>{{ field.help_text }}</small>
+    </div>
+  {% endfor %}
+  <button class="btn btn-secondary">Post</button>
 {%  endblock %}

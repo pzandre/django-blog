@@ -5,6 +5,11 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ['title', 'author', 'body', 'tags']
+        
+        help_texts = {
+            'title': 'Choose a interesting title',
+            'body': 'Tell us a nice story',
+        }
 
         widget = {
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter the title for your post'}),
@@ -18,6 +23,11 @@ class EditForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ['title', 'body', 'tags']
+
+        help_texts = {
+            'title': 'Choose a interesting title',
+            'body': 'Tell us a nice story',
+        }
 
         widget = {
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter the title for your post'}),
