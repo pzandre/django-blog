@@ -4,11 +4,12 @@ from .models import Post
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'author', 'body', 'tags']
+        fields = ['title', 'author', 'preview', 'body', 'tags']
         
         help_texts = {
             'title': 'Choose a interesting title',
-            'body': 'Tell us a nice story'
+            'body': 'Tell us a nice story',
+            'preview': '255 chars max'
         }
 
         widget = {
@@ -22,11 +23,12 @@ class PostForm(forms.ModelForm):
 class EditForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'body', 'tags']
+        fields = ['title', 'preview', 'body', 'tags']
 
         help_texts = {
             'title': 'Choose a interesting title',
-            'body': 'Tell us a nice story'
+            'body': 'Tell us a nice story',
+            'preview': '255 chars max'
         }
 
         widget = {
