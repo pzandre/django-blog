@@ -22,6 +22,6 @@ deploy-staging:
        git clone $REPO_ORIGIN $LOCAL_FOLDER &&
        tar -xzf secrets.tar.gz -C app/ &&
        rm secrets.tar.gz &&
-       docker-compose $DOCKER_YML"
+       docker-compose $DOCKER_YML" -o LogLevel=ERROR
   only:
     - main
