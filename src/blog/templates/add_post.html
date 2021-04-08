@@ -2,6 +2,8 @@
 {% block title %} Django Blog | Add Post {% endblock %}
 {% block content %}
 
+{% if user.is_authenticated %}
+
 <h1>Add Blog Post</h1>
 <div class="mb-3">
 <form method="POST">
@@ -14,5 +16,10 @@
     </div>
   {% endfor %}
   <button class="btn btn-secondary">Post</button>
-  
+
+{% else %}
+
+<h1>You're not allowed here!</h1>
+
+{% endif %}
 {% endblock %}
