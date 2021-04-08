@@ -5,10 +5,10 @@ from datetime import datetime, date
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, default='Uncategorized')
 
     def __str__(self):
-    return self.name
+        return self.name
 
     def get_absolute_url(self):
         return reverse('home')
@@ -17,7 +17,7 @@ class Category(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=255)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    preview = models.CharField(max_length=255)
+    preview = models.CharField(max_length=255, default='Preview text')
     body = models.TextField()
     tags = models.CharField(max_length=255)
     post_date = models.DateTimeField(auto_now_add=True)
