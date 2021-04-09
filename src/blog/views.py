@@ -13,9 +13,12 @@ class HomeView(ListView):
 
 class ArticleDetailView(DetailView):
     model = Post
-    template_name = 'article_details.html'
-    
+    def get(self, request, slug):
+        article = Post.objects.get(slug_url=slug)
+        context = {'post': article}
+        return render(request, 'article_details.html', context)
 
+    
 class AddPostView(CreateView):
     model = Post
     template_name = 'add_post.html'
@@ -26,6 +29,7 @@ class UpdatePostView(UpdateView):
     model = Post
     form_class = EditForm
     template_name = 'update_post.html'
+    success_url = reverse_lazy('home')
 
 
 class DeletePostView(DeleteView):
@@ -42,10 +46,9 @@ class CategoryView(ListView):
 
 class CategoryDetailView(DetailView):
     model = Post
-    template_name = 'category_detail.html'
-
-    def get(self, request, cats):
-        category_name = Category.objects.get(slug_url=cats)
+    # template_name = 'category_detail.html'
+    def get(self, request, slug):
+        category_name = Category.objects.get(slug_url=slug)
         filtered_posts = Post.objects.filter(category=category_name).order_by('-post_date')
-        context = {'filtered_posts': filtered_posts}
+        context = {'filtered_posts': filtered_posts, 'category_name': category_name}
         return render(request, 'category_detail.html', context)

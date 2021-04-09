@@ -1,9 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+<h1>{{ category_name }}</h1>
+<br/><hr>
+
 {% for post in filtered_posts %}
 
-  <h1>{{ post.title }}</h1>
+ <a href="{% url 'article-detail' post.slug_url %}"><h3>{{ post.title }}</h3></a>
   <small>By: 
   {{ post.author.first_name }}
   {{ post.author.last_name }} - 
@@ -18,14 +22,16 @@
   {% endif %}
   {% endif %}
   {% endif %}
-  
-  <hr>
-  <br/>
+  <br/><br/>
+
   {{ post.preview }}
+  <br/>
+  <hr>
 
   {% empty %}
 
   <h1>There's no posts in this category</h1>
+  <br/>
 
 {% endfor %}
 
