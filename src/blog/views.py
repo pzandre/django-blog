@@ -44,9 +44,8 @@ class CategoryDetailView(DetailView):
     model = Post
     template_name = 'category_detail.html'
 
-    def get(self, request, *args, **kwargs):
-        categories = get_object_or_404(Category.objects.all())
-        filtered_posts = Post.objects.filter(category=categories).order_by('-post_date')
+    def get(self, request, pk, *args, **kwargs):
+        filtered_posts = Post.objects.filter(category=pk).order_by('-post_date')
         context = {'filtered_posts': filtered_posts}
         return render(request, 'category_detail.html', context)
 
