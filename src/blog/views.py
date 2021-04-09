@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .forms import PostForm, EditForm
@@ -42,7 +42,12 @@ class CategoryView(ListView):
 
 class CategoryDetailView(DetailView):
     model = Post
-    template_name = 'category_details.html'
-    pk = self.kwargs['pk']
-    ordering = ['-post_date']
+    template_name = 'category_detail.html'
+
+    def get(self, request, *args, **kwargs):
+        categories = get_object_or_404(Category.objects.all())
+        filtered_posts = Post.objects.filter(category=categories).order_by('-post_date')
+        context = {'filtered_posts': filtered_posts}
+        return render(request, 'category_detail.html', context)
+
 
