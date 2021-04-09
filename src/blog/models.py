@@ -10,6 +10,7 @@ class Category(models.Model):
         verbose_name_plural = "categories"
 
     name = models.CharField(max_length=255, default='Uncategorized')
+    slug_url = models.SlugField(max_length=50)
     navbar_color = ColorField(default='#343A40')
 
     def __str__(self):
@@ -21,6 +22,7 @@ class Category(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=255)
+    slug_url = models.SlugField(max_length=50)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     preview = models.CharField(max_length=255, default='Preview text')
     body = models.TextField()

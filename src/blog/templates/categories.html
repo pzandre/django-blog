@@ -8,7 +8,7 @@
 {% for category in object_list %}
 
   <li>
-    <strong><a href="{% url 'category-detail' category.pk %}">{{ category.name }}</a></strong>
+    <strong><a href="{% url 'category-detail' category.slug_url %}">{{ category.name }}</a></strong>
   </li>
 
 {% endfor %}
