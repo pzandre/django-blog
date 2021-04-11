@@ -9,7 +9,8 @@ class PostForm(forms.ModelForm):
         help_texts = {
             'title': 'Choose a interesting title',
             'body': 'Tell us a nice story',
-            'preview': '255 chars max'
+            'preview': '255 chars max',
+            'slug_url': "If you don't know what you're doing, leave as it is",
         }
 
         widget = {
@@ -18,7 +19,7 @@ class PostForm(forms.ModelForm):
             'body': forms.Textarea(attrs={'class': 'form-control', 'placeholder': "What's in your mind?"}),
             'tags': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'What is this post related to?'}),
             'category': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Choose a category'}),
-            'slug_url': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'The post URL'})
+            'slug_url': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'The post URL'}),
         }
 
 
@@ -30,12 +31,12 @@ class EditForm(forms.ModelForm):
         help_texts = {
             'title': 'Choose a interesting title',
             'body': 'Tell us a nice story',
-            'preview': '255 chars max'
+            'preview': '255 chars max',
         }
 
         widget = {
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter the title for your post'}),
             'body': forms.Textarea(attrs={'class': 'form-control', 'placeholder': "What's in your mind?"}),
             'tags': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'What is this post related to?'}),
-            'category': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Choose a category'})
+            'category': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Choose a category'}),
         }
