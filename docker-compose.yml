@@ -8,7 +8,7 @@ services:
         command: bash -rc "python src/manage.py makemigrations &&
                            python src/manage.py migrate &&
                            gunicorn --limit-request-line 8190 --workers=3
-+                          --chdir /usr/src/app/src wsgi:application --bind 0.0.0.0:8000"
+                           --chdir /usr/src/app/src wsgi:application --bind 0.0.0.0:8000"
         volumes:
             - .:/usr/src/app
         expose:
