@@ -9,9 +9,13 @@
 
 2. You may need to also follow [this](https://docs.docker.com/engine/install/linux-postinstall/ "Post-installation steps for Linux") instructions to properly setup the Docker service.
 
-3. We'll use the script made by Philipp Schmieder, download the file "init-letsencrypt.sh" via [GitHub](https://github.com/wmnnd/nginx-certbot/ "Boilerplate for nginx with Let’s Encrypt on docker-compose") or using the following command:
+3. We'll use the script made by Philipp Schmieder to create the SSL certs. 
+
+Download the file "init-letsencrypt.sh" via [GitHub](https://github.com/wmnnd/nginx-certbot/ "Boilerplate for nginx with Let’s Encrypt on docker-compose") or using the following command:
 
     `curl -L https://raw.githubusercontent.com/wmnnd/nginx-certbot/master/init-letsencrypt.sh > init-letsencrypt.sh`
+
+Open the script on any text editor and swap the example domain on line 8 with your domain and enter a valid e-mail address on line 11.
 
 Then run `./init-letsencrypt.sh`
 
@@ -21,7 +25,7 @@ Then run `./init-letsencrypt.sh`
 
 You'll then be prompted to enter the Database name, username and password.
 
-If the application returns an error, check  with `ls -la` if the folders and subfolder inside `ssl/certbot/conf` are owned by root user. If it does, You'll have to enter `sudo chown $USER:USER` on every subfolder. If you are unsure if you missed something, just repeat `docker-compose up` at the root folder of this project.
+### If the application returns an error, check  with `ls -la` if the folders and subfolders inside `ssl/certbot/conf` are owned by root user. If it does, you'll have to enter `sudo chown $USER:USER *` on every subfolder. If you are unsure if you missed something, just repeat `docker-compose up` at the root folder of this project.
 
 5. Create a Django superuser using the following command:
 
