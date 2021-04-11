@@ -7,11 +7,12 @@ services:
         container_name: django
         command: bash -rc "python src/manage.py makemigrations &&
                            python src/manage.py migrate &&
-                           python src/manage.py runserver 0.0.0.0:8000"
+                           gunicorn --limit-request-line 8190 --workers=3
++                          --chdir /usr/src/app/src wsgi:application --bind 0.0.0.0:8000"
         volumes:
             - .:/usr/src/app
-        ports:
-            - "80:8000"
+        expose:
+            - "8000"
         env_file:
             - ./.env
         depends_on:
@@ -24,3 +25,25 @@ services:
             POSTGRES_USER: ${POSTGRES_USER}
             POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
             POSTGRES_DB: ${POSTGRES_DB}
+    nginx:
+        image: nginx
+        restart: unless-stopped
+        volumes:
+            - ./src/static:/etc/nginx/static
+            - ./ssl/nginx:/etc/nginx/conf.d
+            - ./ssl/certbot/conf:/etc/letsencrypt
+            - ./ssl/certbot/www:/var/www/certbot
+        ports:
+            - "80:80"
+            - "443:443"
+        command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+        depends_on:
+            - django
+    certbot:
+        image: certbot/certbot
+        restart: unless-stopped
+        volumes:
+            - ./ssl/certbot/conf:/etc/letsencrypt
+            - ./ssl/certbot/www:/var/www/certbot
+        entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+

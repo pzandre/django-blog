@@ -9,18 +9,34 @@
 
 2. You may need to also follow [this](https://docs.docker.com/engine/install/linux-postinstall/ "Post-installation steps for Linux") instructions to properly setup the Docker service.
 
-3. Run setup.sh shell script to set the database variables.
+3. We'll use the script made by Philipp Schmieder, download the file "init-letsencrypt.sh" via [GitHub](https://github.com/wmnnd/nginx-certbot/ "Boilerplate for nginx with Let’s Encrypt on docker-compose") or using the following command:
+
+    `curl -L https://raw.githubusercontent.com/wmnnd/nginx-certbot/master/init-letsencrypt.sh > init-letsencrypt.sh`
+
+4. Run setup.sh shell script to set the database variables.
 
     `$ ./setup.sh`
 
 You'll then be prompted to enter the Database name, username and password.
+
+If the application returns an error, check  with `ls -la` if the folders and subfolder inside `ssl/certbot/conf` are owned by root user. If it does, You'll have to enter `sudo chown $USER:USER` on every subfolder. If you are unsure if you missed something, just repeat `docker-compose up` at the root folder of this project.
+
+5. Create a Django superuser using the following command:
+
+    `docker exec -it django python src/manage.py createsuperuser`
+
+You'll be prompted to enter an username, email and password.
+
+6. Run the following command:
+
+    `docker exec -it django python src/manage.py collectstatic`
 
 This setup script was tested on a Linux environment, if you're trying to install on a different Operating System you can still set it up manually.
 
 ## Manual set-up (Windows, Mac or Linux, just for fun)
 ### There are few steps to manually install the application:
 
-1. Follow step 1 and 2 of the Automated Install above.
+1. Follow step 1, 2 and 3 of the Automated Install above.
 
 2. Create a file named ".env" at the root of this project (the same folder containing docker-compose.yml)
 
@@ -42,6 +58,10 @@ The final step is to create a Django superuser using the following command:
 `docker exec -it django python src/manage.py createsuperuser`
 
 You'll be prompted to enter an username, email and password.
+
+Run the following command:
+
+    `docker exec -it django python src/manage.py collectstatic`
 
 This finishes the installation process and the docker containers will be running as background processes. The application can be acessed entering `localhost:8000` at the web browser of your choice.
 
