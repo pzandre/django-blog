@@ -20,7 +20,8 @@ deploy-staging:
        tar -czf secrets.tar.gz -C $LOCAL_FOLDER $SECRETS &&
        sudo rm -rf $LOCAL_FOLDER &&
        git clone $REPO_ORIGIN $LOCAL_FOLDER &&
-       tar -xzf secrets.tar.gz -C app/ &&
+       sed -i 's/DEBUG = True/DEBUG = False/' $LOCAL_FOLDER/src/core/settings.py &&
+       tar -xzf secrets.tar.gz -C $LOCAL_FOLDER &&
        rm secrets.tar.gz &&
        docker-compose $DOCKER_YML"
   only:
