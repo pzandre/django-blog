@@ -13,6 +13,8 @@
 
     `curl -L https://raw.githubusercontent.com/wmnnd/nginx-certbot/master/init-letsencrypt.sh > init-letsencrypt.sh`
 
+Then run `./init-letsencrypt.sh`
+
 4. Run setup.sh shell script to set the database variables.
 
     `$ ./setup.sh`
@@ -32,41 +34,3 @@ You'll be prompted to enter an username, email and password.
     `docker exec -it django python src/manage.py collectstatic`
 
 This setup script was tested on a Linux environment, if you're trying to install on a different Operating System you can still set it up manually.
-
-## Manual set-up (Windows, Mac or Linux, just for fun)
-### There are few steps to manually install the application:
-
-1. Follow step 1, 2 and 3 of the Automated Install above.
-
-2. Create a file named ".env" at the root of this project (the same folder containing docker-compose.yml)
-
-3. Using the text editor of your choice, write the following at this .env file:
-
-`POSTGRES_DB=DATABASENAME`\
-`POSTGRES_USER=USERNAME`\
-`POSTGRES_PASSWORD=PASSWORD`
-
-### **Swap DATABASENAME, USERNAME and PASSWORD with data of your choice.**
-
-Then, using a terminal, navigate to the project folder and start the application:
-
-`docker-compose up --build -d`
-
-## Superuser creation
-The final step is to create a Django superuser using the following command:
-
-`docker exec -it django python src/manage.py createsuperuser`
-
-You'll be prompted to enter an username, email and password.
-
-Run the following command:
-
-    `docker exec -it django python src/manage.py collectstatic`
-
-This finishes the installation process and the docker containers will be running as background processes. The application can be acessed entering `localhost:8000` at the web browser of your choice.
-
-To stop the application, navigate to the project folder using a terminal and enter `docker-compose down`
-
-To start it again simply enter `docker-compose up -d`
-
-If you prefer to maintain the process attached to the terminal window, in order to debug, simply remove the `-d` argument from the former command.

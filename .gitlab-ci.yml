@@ -22,7 +22,7 @@ deploy-staging:
        sudo rm -rf $LOCAL_FOLDER &&
        git clone $REPO_ORIGIN $LOCAL_FOLDER &&
        sed -i 's/DEBUG = True/DEBUG = False/' $LOCAL_FOLDER/src/core/settings.py &&
-       sudo mv $SECRETS_BACKUPS $LOCAL_FOLDER &&
+       mv $SECRETS_BACKUPS &&
        mv $CERTS_BACKUP_FILES $CERTS_FOLDER &&
        docker-compose $DOCKER_YML &&
        docker exec -it django python src/manage.py collectstatic"
