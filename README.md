@@ -50,3 +50,5 @@ To stop the application, navigate to the project folder using a terminal and ent
 To start it again simply enter `docker-compose up -d`
 
 If you prefer to maintain the process attached to the terminal window, in order to debug, simply remove the `-d` argument from the former command.
+
+CI/CD Test
