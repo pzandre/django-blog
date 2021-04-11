@@ -17,12 +17,14 @@ deploy-staging:
     - ssh $USER@$SSH_IP_ADDRESS
       "cd $REPO_PATH &&
        docker stop $DOCKER_CONTAINERS &&
+       cp -r $CERTS $BACKUP_FOLDER &&
        tar -czf secrets.tar.gz -C $LOCAL_FOLDER $SECRETS &&
        sudo rm -rf $LOCAL_FOLDER &&
        git clone $REPO_ORIGIN $LOCAL_FOLDER &&
        sed -i 's/DEBUG = True/DEBUG = False/' $LOCAL_FOLDER/src/core/settings.py &&
        tar -xzf secrets.tar.gz -C $LOCAL_FOLDER &&
        rm secrets.tar.gz &&
+       mv $BACKUP_CERTS $CERTS_FOLDER &&
        docker-compose $DOCKER_YML"
   only:
     - main
