@@ -10,6 +10,11 @@ class HomeView(ListView):
     template_name = 'home.html'
     ordering = ['-post_date']
 
+    def get_context_data(self, *args, **kwargs):
+        cat_menu = Category.objects.all().only('name')
+        context = super(HomeView, self).get_context_data(*args, **kwargs)
+        context["cat_menu"] = cat_menu
+        return context
 
 class ArticleDetailView(DetailView):
     model = Post
@@ -47,7 +52,7 @@ class CategoryView(ListView):
 
 class CategoryDetailView(DetailView):
     model = Post
-    # template_name = 'category_detail.html'
+    
     def get(self, request, slug):
         category_name = Category.objects.get(slug_url=slug)
         filtered_posts = Post.objects.filter(category=category_name).order_by('-post_date')
