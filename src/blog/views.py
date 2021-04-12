@@ -18,6 +18,7 @@ class HomeView(ListView):
 
 class ArticleDetailView(DetailView):
     model = Post
+    
     def get(self, request, slug):
         article = Post.objects.get(slug_url=slug)
         context = {'post': article}
@@ -35,12 +36,14 @@ class UpdatePostView(UpdateView):
     model = Post
     form_class = EditForm
     template_name = 'update_post.html'
+    slug_field = 'slug_url'
     success_url = reverse_lazy('home')
 
 
 class DeletePostView(DeleteView):
     model = Post
     template_name = 'delete_post.html'
+    slug_field = 'slug_url'
     success_url = reverse_lazy('home')
 
 
@@ -52,6 +55,7 @@ class CategoryView(ListView):
 
 class CategoryDetailView(DetailView):
     model = Post
+    slug_field = 'slug_url'
     
     def get(self, request, slug):
         category_name = Category.objects.get(slug_url=slug)
