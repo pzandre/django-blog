@@ -1,18 +1,11 @@
 {% extends 'base.html' %}
-
 {% block content %}
-
 <h1>Categories</h1>
 <ul>
-
-{% for category in object_list %}
-
-  <li>
-    <strong><a href="{% url 'category-detail' category.slug_url %}">{{ category.name }}</a></strong>
-  </li>
-
-{% endfor %}
-
+  {% for category in object_list %}
+    <li>
+      <strong><a href="{% url 'category-detail' category.slug_url %}">{{ category.name }}</a></strong>
+    </li>
+  {% endfor %}
 </ul>
-
 {% endblock %}

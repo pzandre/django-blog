@@ -1,40 +1,28 @@
 {% extends 'base.html' %}
-
 {% block content %}
-
 <h1>{{ category_name }}</h1>
 <br/><hr>
-
 {% for post in filtered_posts %}
-
- <a href="{% url 'article-detail' post.slug_url %}"><h3>{{ post.title }}</h3></a>
+  <a href="{% url 'article-detail' post.slug_url %}"><h3>{{ post.title }}</h3></a>
   <small>By: 
   {{ post.author.first_name }}
   {{ post.author.last_name }} - 
   {{ post.post_date }}
-  
   {% if user.is_authenticated %}
     {% if perms.blog.change_post %}
-    - <a href="{% url 'update-post' post.slug_url %}">Edit</a>
+      - <a href="{% url 'update-post' post.slug_url %}">Edit</a>
     {% endif %}
     {% if perms.blog.delete_post %}
     <a href="{% url 'delete-post' post.slug_url %}">Delete</a></small>
     {% endif %}
   {% endif %}
   <br/><br/>
-
   {{ post.preview }}
-  <br/>
-  <hr>
-
+  <br/><hr>
   {% empty %}
-
-  <h1>There are no posts in this category</h1>
-  <br/>
-
+    <h1>There are no posts in this category</h1>
+    <br/>
 {% endfor %}
-
-  <br/><br/>
-  <a href="{% url 'categories' %}" class="btn btn-secondary">Back</a>
-
+<br/><br/>
+<a href="{% url 'categories' %}" class="btn btn-secondary">Back</a>
 {% endblock %}

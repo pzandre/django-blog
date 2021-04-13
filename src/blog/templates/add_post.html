@@ -3,25 +3,23 @@
 {% block content %}
 {% load static %}
 {% if user.is_authenticated %}
-{% if perms.blog.add_post %}
-<h1>Add Blog Post</h1>
-  <form method="POST">
-    {% csrf_token %}   
-    {% for field in form %}
-    <div class="mb-3">
-      <small>{{ field.label }}</small><br/>
-      {{ field }}
-      <small>{{ field.help_text }}</small>
-    </div>
-    {% endfor %}
-    <button class="btn btn-secondary">Post</button>
-    
-    {% else %}
-    
+  {% if perms.blog.add_post %}
+    <h1>Add Blog Post</h1>
+      <form method="POST">
+        {% csrf_token %}   
+        {% for field in form %}
+        <div class="mb-3">
+          <small>{{ field.label }}</small><br/>
+          {{ field }}
+          <small>{{ field.help_text }}</small>
+        </div>
+        {% endfor %}
+        <button class="btn btn-secondary">Post</button>
+      </form>  
+  {% else %}    
     <h1>You're not allowed here!</h1>
-    
-    {% endif %}
-    {% endif %}
-    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
-    <script src="{% static 'js/slugify_title.js' %}"></script>
-    {% endblock %}
+  {% endif %}
+{% endif %}
+<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'js/slugify_title.js' %}"></script>
+{% endblock %}
