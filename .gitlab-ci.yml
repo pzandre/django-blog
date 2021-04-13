@@ -20,7 +20,7 @@ deploy-staging:
        cp -r $CERTS $CERTS_BACKUP_FOLDER &&
        cp $SECRETS $SECRETS_BACKUP_FOLDER &&
        sudo rm -rf $LOCAL_FOLDER &&
-       git clone $REPO_ORIGIN $LOCAL_FOLDER &&
+       git clone -q $REPO_ORIGIN $LOCAL_FOLDER &&
        sed -i 's/DEBUG = True/DEBUG = False/' $LOCAL_FOLDER/src/core/settings.py &&
        mv $SECRETS_BACKUPS &&
        mv $CERTS_BACKUP_FILES $CERTS_FOLDER &&

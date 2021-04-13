@@ -26,7 +26,6 @@ class ArticleDetailView(NavBarView, DetailView):
     def get(self, request, slug):
         article = Post.objects.get(slug_url=slug)
         context = {'post': article, 'cat_menu': self.cat_menu}
-
         return render(request, 'article_details.html', context)
 
     

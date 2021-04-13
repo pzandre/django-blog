@@ -5,7 +5,6 @@
 {% if user.is_authenticated %}
 {% if perms.blog.add_post %}
 <h1>Add Blog Post</h1>
-<div class="mb-3">
   <form method="POST">
     {% csrf_token %}   
     {% for field in form %}

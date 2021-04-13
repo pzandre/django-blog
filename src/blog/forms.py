@@ -7,20 +7,19 @@ class PostForm(forms.ModelForm):
         fields = ['title', 'author', 'preview', 'body', 'slug_url', 'tags', 'category']
         
         help_texts = {
-            'title': 'Choose a interesting title',
-            'body': 'Tell us a nice story',
             'preview': '255 chars max',
-            'slug_url': "If you don't know what you're doing, leave as it is",
+            'slug_url': "If you don't know what you're doing, leave it   as it is",
         }
-
-        widget = {
-            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter the title for your post'}),
-            'author': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Who are you?'}),
-            'body': forms.Textarea(attrs={'class': 'form-control', 'placeholder': "What's in your mind?"}),
-            'tags': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'What is this post related to?'}),
-            'category': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Choose a category'}),
-            'slug_url': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'The post URL'}),
-        }
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['title'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Enter the title for your post'})
+        self.fields['author'].widget.attrs.update({'class': 'form-control'})
+        self.fields['preview'].widget.attrs.update({'class': 'form-control', 'placeholder': 'This will show at the Home Page'})
+        self.fields['body'].widget.attrs.update({'class': 'form-control', 'placeholder': 'What is in your mind?'})
+        self.fields['tags'].widget.attrs.update({'class': 'form-control','placeholder': 'What is this post related to?'})
+        self.fields['category'].widget.attrs.update({'class': 'form-control'})
+        self.fields['slug_url'].widget.attrs.update({'class': 'form-control', 'placeholder': 'The post URL'})
 
 
 class EditForm(forms.ModelForm):
@@ -29,14 +28,16 @@ class EditForm(forms.ModelForm):
         fields = ['title', 'preview', 'body', 'tags', 'category']
 
         help_texts = {
-            'title': 'Choose a interesting title',
-            'body': 'Tell us a nice story',
             'preview': '255 chars max',
         }
 
-        widget = {
-            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter the title for your post'}),
-            'body': forms.Textarea(attrs={'class': 'form-control', 'placeholder': "What's in your mind?"}),
-            'tags': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'What is this post related to?'}),
-            'category': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Choose a category'}),
-        }
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['title'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Enter the title for your post'})
+        self.fields['preview'].widget.attrs.update({'class': 'form-control', 'placeholder': 'This will show at the Home Page'})
+        self.fields['body'].widget.attrs.update({'class': 'form-control', 'placeholder': "What's in your mind?"})
+        self.fields['tags'].widget.attrs.update({'class': 'form-control','placeholder': 'What is this post related to?'})
+        self.fields['category'].widget.attrs.update({'class': 'form-control'})
+
+
+

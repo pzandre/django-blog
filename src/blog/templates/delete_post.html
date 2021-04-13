@@ -3,20 +3,22 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-{% if perms.blog.delete_post %}
+  {% if perms.blog.delete_post %}
+    {% if user.id == post.author.id %}
 
-<h1>Delete Post</h1>
-<h3>Delete: {{ post.title }}</h3>
-<form method="POST">
-  {% csrf_token %}
-  <strong>Are you sure?</strong><br/><br/>
-  <button class="btn btn-secondary">Delete it!</button>
-</div>
+    <h1>Delete Post</h1>
+    <h3>Delete: {{ post.title }}</h3>
+    <form method="POST">
+      {% csrf_token %}
+      <strong>Are you sure?</strong><br/><br/>
+      <button class="btn btn-secondary">Delete it!</button>
+    </div>
 
-{% else %}
+    {% else %}
 
-<h1>You're not allowed here!</h1>
+    <h1>You're not allowed here!</h1>
 
-{% endif %}
+    {% endif %}
+  {% endif %}
 {% endif %}
 {% endblock %}
