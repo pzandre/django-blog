@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, View
+from django.views.generic import ListView, DetailView, View
 from .forms import PostForm, EditForm
 from .models import Post, Category
 
@@ -27,13 +27,6 @@ class ArticleDetailView(NavBarView, DetailView):
         article = Post.objects.get(slug_url=slug)
         context = {'post': article, 'cat_menu': self.cat_menu}
         return render(request, 'article_details.html', context)
-
-
-class DeletePostView(NavBarView, DeleteView):
-    model = Post
-    template_name = 'delete_post.html'
-    slug_field = 'slug_url'
-    success_url = reverse_lazy('home')
 
 
 class CategoryView(NavBarView, ListView):
