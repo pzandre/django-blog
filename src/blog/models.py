@@ -26,7 +26,7 @@ class Post(models.Model):
     slug_url = models.SlugField(max_length=50)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     preview = models.CharField(max_length=255)
-    body = models.RichTextField(blank=True, null=True)
+    body = RichTextField(blank=True, null=True)
     tags = models.CharField(max_length=255)
     post_date = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
