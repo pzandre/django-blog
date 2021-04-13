@@ -7,7 +7,7 @@
 {{ post.post_date }}
 {% if user.is_authenticated %}
   {% if perms.blog.change_post %}
-    - <a href="{% url 'admin:blog_post_{{ post.id}}_change' %}">Edit</a>
+    - <a href="{% url 'admin:blog_post_change' post.pk %}">Edit</a>
   {% endif %}
   {% if perms.blog.delete_post %}
     <a href="{% url 'delete-post' post.slug_url %}">Delete</a></small>

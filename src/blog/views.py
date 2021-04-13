@@ -29,28 +29,6 @@ class ArticleDetailView(NavBarView, DetailView):
         return render(request, 'article_details.html', context)
 
     
-class AddPostView(NavBarView, CreateView):
-    model = Post
-    template_name = 'add_post.html'
-    form_class = PostForm
-    success_url = reverse_lazy('home')
-
-
-class UpdatePostView(NavBarView, UpdateView):
-    model = Post
-    form_class = EditForm
-    template_name = 'update_post.html'
-    slug_field = 'slug_url'
-    success_url = reverse_lazy('home')
-
-
-class DeletePostView(NavBarView, DeleteView):
-    model = Post
-    template_name = 'delete_post.html'
-    slug_field = 'slug_url'
-    success_url = reverse_lazy('home')
-
-
 class CategoryView(NavBarView, ListView):
     model = Category
     template_name = 'categories.html'
