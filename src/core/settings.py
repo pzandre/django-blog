@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'ckeditor', 
     'colorfield',
     'blog',
-    'members',
 ]
 
 MIDDLEWARE = [
