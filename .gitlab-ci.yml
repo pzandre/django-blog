@@ -17,13 +17,13 @@ deploy-staging:
     - ssh -q $USER@$SSH_IP_ADDRESS
       "cd $REPO_PATH &&
        docker stop $DOCKER_CONTAINERS &&
-       cp -r $CERTS $CERTS_BACKUP_FOLDER &&
+       cp -r $CERTS_FOLDER* $CERTS_BACKUP_FOLDER &&
        cp $SECRETS $SECRETS_BACKUP_FOLDER &&
        sudo rm -rf $LOCAL_FOLDER &&
        git clone -q $REPO_ORIGIN $LOCAL_FOLDER &&
        sed -i 's/DEBUG = True/DEBUG = False/' $LOCAL_FOLDER/src/core/settings.py &&
        mv $SECRETS_BACKUPS &&
-       mv $CERTS_BACKUP_FILES $CERTS_FOLDER &&
+       mv $CERTS_BACKUP_FOLDER* $CERTS_FOLDER &&
        docker-compose $DOCKER_YML &&
        docker exec django python src/manage.py collectstatic --noinput"
   only:
