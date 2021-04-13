@@ -33,6 +33,7 @@
                   {% endfor %}
                 </ul>
               </li>
+            {% endif %}
             {% if user.is_authenticated %}
               {% if perms.blog.add_post %}
                 <li class="nav-item">
