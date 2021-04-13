@@ -87,6 +87,14 @@ DATABASES = {
         'PASSWORD': os.getenv("POSTGRES_PASSWORD"),
         'HOST': 'pgdb',
         'PORT': 5432,
+
+        # RDS ONLY
+        # 'NAME': 'DB_NAME',
+        # 'USER': 'DB_USERNAME',
+        # 'HOST': 'DB_HOSTNAME',
+        # 'PASSWORD': 'DB_PASSWORD',
+        # 'PORT': 'DB_PORT'
+
     }
 }
 

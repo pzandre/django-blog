@@ -8,7 +8,7 @@ class PostForm(forms.ModelForm):
         
         help_texts = {
             'preview': '255 chars max',
-            'slug_url': "If you don't know what you're doing, leave it   as it is",
+            'slug_url': "If you don't know what you're doing, leave it as it is",
         }
     
     def __init__(self, *args, **kwargs):
