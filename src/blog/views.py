@@ -28,7 +28,14 @@ class ArticleDetailView(NavBarView, DetailView):
         context = {'post': article, 'cat_menu': self.cat_menu}
         return render(request, 'article_details.html', context)
 
-    
+
+class DeletePostView(NavBarView, DeleteView):
+    model = Post
+    template_name = 'delete_post.html'
+    slug_field = 'slug_url'
+    success_url = reverse_lazy('home')
+
+
 class CategoryView(NavBarView, ListView):
     model = Category
     template_name = 'categories.html'
