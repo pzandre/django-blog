@@ -6,7 +6,7 @@ from .models import Post, Category
 
 
 class NavBarView(View):
-    cat_menu = Category.objects.all().only('name')
+    cat_menu = Category.objects.values('name', 'slug_url')
 
     def get_context_data(self, *args, **kwargs):
         context = super(NavBarView, self).get_context_data(*args, **kwargs)

@@ -29,7 +29,7 @@
                 role="button" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   {% for item in cat_menu %}
-                    <li><a class="dropdown-item" href="{% url 'category-detail' item.slug_url %}">{{ item }}</a></li>
+                    <li><a class="dropdown-item" href="{% url 'category-detail' item.slug_url %}">{{ item.name }}</a></li>
                   {% endfor %}
                 </ul>
               </li>
