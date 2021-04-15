@@ -24,6 +24,8 @@ class Category(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=255)
     slug_url = models.SlugField(max_length=50)
+    header_image = models.ImageField(null=True, blank=True, upload_to="header_images/")
+    header_img_alt_text = models.CharField(max_length=255, null=True, blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     preview = models.CharField(max_length=255)
     body = RichTextField(blank=True, null=True)

@@ -1,7 +1,7 @@
 #! /bin/bash
 
 #This will generate the project environment variables via user's input
-echo "Choose the name of your database:"
+echo "Enter the name of your database:"
 read POSTGRES_DB
 
 if [ -z "$POSTGRES_DB" ]
@@ -10,7 +10,7 @@ if [ -z "$POSTGRES_DB" ]
     exit 1
 fi
 
-echo "Choose your database username:"
+echo "Enter your database username:"
 read POSTGRES_USER
 
 if [ -z "$POSTGRES_USER" ]
@@ -19,7 +19,7 @@ if [ -z "$POSTGRES_USER" ]
     exit 1
 fi
 
-echo "Choose your database password:"
+echo "Enter your database password:"
 read -s POSTGRES_PASSWORD
 
 if [ -z "$POSTGRES_PASSWORD" ]
@@ -28,6 +28,17 @@ if [ -z "$POSTGRES_PASSWORD" ]
     exit 1
 fi
 
+echo "Enter your Disqus Website Name (ONLY THE SUBDOMAIN YOU CHOSE, NOT THE .disqus.com PART --- THIS_ONE_ONLY.disqus.com)"
+read -s DISQUS_WEBSITE
+
+if [ -z "$DISQUS_WEBSITE" ]
+  then
+    echo "You must enter a valid Disqus Website, read the README.md file if you're lost."
+    exit 1
+fi
+
+sed -i 's/DISQUS-URL/$DISQUS_WEBSITE/' src/blog/templates/article_details.html
+
 touch ./.env
 
 #Saving the variables at .env file

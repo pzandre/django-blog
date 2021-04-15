@@ -4,6 +4,10 @@
 <ul>
   {% for post in object_list %}
     <li>
+      {% if post.header_image %}
+        <img src="{{ post.header_image.url }}"
+        {% if post.header_image %} alt="{{ post.header_img_alt_text }}" {% else %} alt="" {% endif %}> 
+      {% endif %}
       <a href="{% url 'article-detail' post.slug_url %}">{{ post.title }}</a> -
       {{ post.author.first_name }}
       {{ post.author.last_name }} -
