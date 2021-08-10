@@ -5,19 +5,8 @@ from .forms import PostForm, EditForm
 from .models import Post, Category
 
 
-class NavBarView(View):
-    cat_menu = Category.objects.values('name', 'slug_url')
-
-    def get_context_data(self, *args, **kwargs):
-        context = super(NavBarView, self).get_context_data(*args, **kwargs)
-        context['cat_menu'] = self.cat_menu
-        return context
-
-
-class HomeView(NavBarView, ListView):
-    model = Post
-    template_name = 'home.html'
-    ordering = ['-post_date']
+def home(request):
+    return render(request, 'home.html')
 
 
 class ArticleDetailView(NavBarView, DetailView):
