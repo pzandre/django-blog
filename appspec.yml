@@ -10,9 +10,9 @@ hooks:
       runas: ubuntu
   AfterInstall:
     - location: scripts/build_compose.sh
-      timeout: 10
+      timeout: 3600
       runas: ubuntu
   ApplicationStart:
     - location: scripts/start_compose.sh
-      timeout: 10
+      timeout: 20
       runas: ubuntu
