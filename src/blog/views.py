@@ -9,7 +9,7 @@ def home(request):
     return render(request, 'home.html')
 
 
-class ArticleDetailView(NavBarView, DetailView):
+class ArticleDetailView(DetailView):
     model = Post
     
     def get(self, request, slug):
@@ -18,13 +18,13 @@ class ArticleDetailView(NavBarView, DetailView):
         return render(request, 'article_details.html', context)
 
 
-class CategoryView(NavBarView, ListView):
+class CategoryView(ListView):
     model = Category
     template_name = 'categories.html'
     ordering = ['id']
 
 
-class CategoryDetailView(NavBarView, DetailView):
+class CategoryDetailView(DetailView):
     model = Post
     slug_field = 'slug_url'
     
