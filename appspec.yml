@@ -5,14 +5,14 @@ files:
     destination: /home/ubuntu/ie-cube-layer/
 hooks:
   ApplicationStop:
-    - location: /home/ubuntu/ie-cube-layer/scripts/stop_compose.sh
+    - location: scripts/stop_compose.sh
       timeout: 20
       runas: ubuntu
   AfterInstall:
-    - location: /home/ubuntu/ie-cube-layer/scripts/build_compose.sh
+    - location: scripts/build_compose.sh
       timeout: 10
       runas: ubuntu
   ApplicationStart:
-    - location: /home/ubuntu/ie-cube-layer/scripts/start_compose.sh
+    - location: scripts/start_compose.sh
       timeout: 10
       runas: ubuntu
