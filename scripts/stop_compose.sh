@@ -1,1 +1,1 @@
-sudo docker-compose -f docker-compose-dev.yml stop
+sudo docker-compose -f /home/ubuntu/ie-cube-layer/docker-compose-dev.yml stop
